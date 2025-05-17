@@ -1,34 +1,29 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Bell, Search, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { ModeToggle } from "@/components/mode-toggle"
-import { SidebarTrigger } from "@/components/ui/sidebar"
-import { useStore } from "@/lib/store"
+import { useState } from "react";
+import { Bell, Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ModeToggle } from "@/components/mode-toggle";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+import { useStore } from "@/lib/store";
 
 export function AppHeader() {
-  const { streak, searchCards, clearSearch } = useStore()
-  const [searchQuery, setSearchQuery] = useState("")
+  const { streak, searchCards, clearSearch } = useStore();
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value
-    setSearchQuery(query)
+    const query = e.target.value;
+    setSearchQuery(query);
 
     if (query.trim()) {
-      searchCards(query)
+      searchCards(query);
     } else {
-      clearSearch()
+      clearSearch();
     }
-  }
-
-  const handleClearSearch = () => {
-    setSearchQuery("")
-    clearSearch()
-  }
+  };
 
   return (
     <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -64,5 +59,5 @@ export function AppHeader() {
         </div>
       </div>
     </header>
-  )
+  );
 }
